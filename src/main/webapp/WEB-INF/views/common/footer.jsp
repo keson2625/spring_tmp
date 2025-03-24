@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="jumbotron">
-	  <h1>푸터</h1>
+	    <h1>푸터</h1>      
 	</div>
 </body>
 </html>
