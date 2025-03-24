@@ -1,5 +1,7 @@
 package kr.kh.tmp.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,11 +54,21 @@ public class HomeController {
 		if(user != null) {
 			model.addAttribute("url", "/");
 			model.addAttribute("msg", "로그인에 성공했습니다,");
+			model.addAttribute("user",user);
 		}else {
 			model.addAttribute("url", "/login?id=" + member.getMe_id());
 			model.addAttribute("msg", "로그인에 실패했습니다,");			
 		}
-		System.out.println(user);
+		return "message";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(Model model, HttpSession session) {
+		
+		session.removeAttribute("user");
+		
+		model.addAttribute("url", "/");
+		model.addAttribute("msg", "로그아웃 했습니다,");
 		return "message";
 	}
 }
