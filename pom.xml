@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>11</java-version>
 		<org.springframework-version>5.1.8.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -116,9 +116,8 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency> 
-		
-				<!-- mybatis 의존성 추가 -->
+		</dependency>    
+		<!-- mybatis 의존성 추가 -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
@@ -141,8 +140,7 @@
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
-		</dependency>
-		       
+		</dependency>  
 		<!-- Tiles -->
 		<dependency>
 		    <groupId>org.apache.tiles</groupId>
@@ -168,7 +166,13 @@
 		    <groupId>org.apache.tiles</groupId>
 		    <artifactId>tiles-template</artifactId>
 		    <version>${org.apache.tiles-version}</version>
-		</dependency>       
+		</dependency>  
+		<!-- 롬복 -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.36</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

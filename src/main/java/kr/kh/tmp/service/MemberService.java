@@ -1,8 +1,9 @@
 package kr.kh.tmp.service;
 
-import org.springframework.stereotype.Service;
-
+import kr.kh.tmp.model.vo.MemberVO;
 
 public interface MemberService {
+
+	boolean signup(MemberVO member);
 
 }
