@@ -8,7 +8,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.kh.tmp.model.vo.MemberVO;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter{
+public class AdminInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(
 	    HttpServletRequest request, 
@@ -17,21 +17,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	    ModelAndView mv)
 	    throws Exception {
 		
-		//넘겨준 회원 정보를 가져옴
-		MemberVO user = (MemberVO)mv.getModel().get("user");
-		//회원 정보가 있으면 => 로그인에 성공했으면 
-		if(user != null) {
-			//세션에 회원 정보를 추가
-			request.getSession().setAttribute("user", user);
-		}
-		
 	}
 	@Override
 	public boolean preHandle(HttpServletRequest request, 
 			HttpServletResponse response, 
 			Object handler)
 			throws Exception {
-			
-			return true;
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		if(user == null || !user.getMe_authority().equals("ADMIN")) {
+			response.sendRedirect(request.getContextPath() + "/");
+			return false;
+		}
+		return true;
 	}
 }
