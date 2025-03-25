@@ -55,7 +55,7 @@ public class PostServiceImp implements PostService {
 
 	@Override
 	public boolean insertPost(PostVO post, MemberVO user) {
-		
+
 		if(user == null || post == null) {
 			return false;
 		}
@@ -63,7 +63,19 @@ public class PostServiceImp implements PostService {
 		post.setPo_me_id(user.getMe_id());
 		
 		boolean res = postDao.insertPost(post);
+		//추후 첨부파일 등록
 		
-		return false;
+		return res;
+	}
+
+	@Override
+	public void updateView(int po_num) {
+		postDao.updateView(po_num);
+		
+	}
+
+	@Override
+	public PostVO getPost(int po_num) {
+		return postDao.selectPost(po_num);
 	}
 }
